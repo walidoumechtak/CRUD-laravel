@@ -40,6 +40,7 @@ services:
             MYSQL_PASSWORD: '${DB_PASSWORD}'
             MYSQL_ALLOW_EMPTY_PASSWORD: 1
         volumes:
+            - /my/own/datadir:/var/lib/mysql
             - 'sail-mysql:/var/lib/mysql'
             - './vendor/laravel/sail/database/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
         networks:
@@ -109,7 +110,7 @@ services:
         networks:
             - sail
         ports:
-            - 8001:80
+            - 8002:80
 networks:
     sail:
         driver: bridge

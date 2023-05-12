@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use GuzzleHttp\Promise\Create;
 use Illuminate\Http\Request;
+use Illuminate\Routing\RedirectController;
+use Illuminate\Support\Facades\Redirect;
 
 class ProductController extends Controller
 {
@@ -12,7 +15,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('products.index');
+        $products = Product::latest()->paginate(5);
+        return view('products.index', compact('products'))->with(request()->input('page'));
     }
 
     /**
@@ -28,7 +32,12 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'detail' => 'required'
+        ]);
+        Product::create($request->all());
+        return redirect()->Route('products.index');
     }
 
     /**
@@ -44,7 +53,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        
     }
 
     /**
@@ -60,6 +69,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect('products/')->with('success', 'Product deleted successfuly');
     }
 }

@@ -1,0 +1,35 @@
+.form-create{
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-create form
+{
+    width: 300px;
+}
+
+.form-create form input[type=text]
+{
+    display: block;
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 10px 5px;
+}
+
+.form-create form textarea
+{
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px 5px;
+}
+
+.form-create form input[type=submit]
+{
+    width: 60%;
+    display: block;
+    margin: 0 auto;
+    padding: 10px 5px;
+}
