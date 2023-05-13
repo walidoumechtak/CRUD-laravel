@@ -37,7 +37,7 @@ class ProductController extends Controller
             'detail' => 'required'
         ]);
         Product::create($request->all());
-        return redirect()->Route('products.index');
+        return redirect()->Route('products.index')->with('create-success', 'Product created successfuly :)');
     }
 
     /**
@@ -45,7 +45,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        $pro = $product;
+        return view('products.show', compact('pro'));
     }
 
     /**
@@ -53,7 +54,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        
+        $edit = $product;
+        return view('products.edit', compact('edit'));
     }
 
     /**
@@ -61,7 +63,8 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $product->update($request->all());
+        return redirect()->route('products.index');
     }
 
     /**

@@ -6,11 +6,16 @@
 {{-- @extends('products.navbar') --}}
 @section('content')
 
-<div class="landing-page">
+<div class="container landing-page">
     @if ($msg = Session::get('success'))
         <div class="alert alert-success">
             <b> {{ $msg }} </b>
         </div>   
+    @endif
+    @if ($msg_create = Session::get('create-success'))
+      <div class="alert alert-success">
+        {{ $msg_create }}
+      </div>
     @endif
     <table class="table">
         <thead>
