@@ -15,7 +15,8 @@
           <label for="exampleFormControlTextarea1">Details of product</label>
           <textarea name="detail" class="form-control" id="exampleFormControlTextarea1" rows="3">{{ $edit->detail }}</textarea>
         </div>
-        <input class="btn btn-primary" type="submit" value="Create">
+        <input class="btn btn-primary" type="submit" value="Update">
+        <a class="btn btn-primary" href="{{ route('products.index') }}">Back</a>
     </form>
 </div>
 

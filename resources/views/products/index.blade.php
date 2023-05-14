@@ -17,6 +17,11 @@
         {{ $msg_create }}
       </div>
     @endif
+    @if ($msg_update = Session::get('update-success'))
+      <div class="alert alert-success">
+        {{ $msg_update }}
+      </div>
+    @endif
     <table class="table">
         <thead>
           <tr>
